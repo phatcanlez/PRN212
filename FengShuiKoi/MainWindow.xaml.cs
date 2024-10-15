@@ -20,5 +20,14 @@ namespace FengShuiKoi
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            String username = txbUsername.Text;
+            String password = txbPassword.Text;
+            BLL.AccountService accountService = new();
+            MessageBox.Show(accountService.Login(username, password));
+
+        }
     }
 }
