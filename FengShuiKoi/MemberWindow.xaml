@@ -1,0 +1,21 @@
+﻿<Window x:Class="FengShuiKoi.MemberWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FengShuiKoi"
+        mc:Ignorable="d"
+        Title="MemberWindow" Height="677" Width="1099" WindowState="Normal" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
+    <Grid Loaded="Grid_Loaded" Margin="0,0,10,-6">
+        <StackPanel  Margin="274,151,273,254">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="/ca-koi-4-3982.png" Opacity="1"/>
+            </StackPanel.Background>
+
+        </StackPanel>
+        <Label x:Name="lblWelcome" Content="Welcome Member" HorizontalAlignment="Left" Height="84" Margin="449,109,0,0" VerticalAlignment="Top" Width="310" FontFamily="Bradley Hand ITC" FontSize="22" FontWeight="Bold" Foreground="#FF6A2427"/>
+        <Button Content="Button" BorderThickness="0.5" HorizontalAlignment="Left" Height="55" Margin="316,439,0,0" VerticalAlignment="Top" Width="188" RenderTransformOrigin="0.526,1.846" Background="#FFDCCACA"/>
+        <Button x:Name="btnCalculate" BorderThickness="0.5"  Content="Calculate koi and pond compatibility" HorizontalAlignment="Left" Height="55" Margin="546,439,0,0" VerticalAlignment="Top" Width="213" Background="#FFDCCACA" Click="btnCalculate_Click"/>
+
+    </Grid>
+</Window>

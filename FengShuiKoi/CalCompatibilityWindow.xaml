@@ -1,0 +1,47 @@
+﻿<Window x:Class="FengShuiKoi.CalCompatibilityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FengShuiKoi"
+        mc:Ignorable="d"
+        Title="CalculateWindow" Height="677" Width="1099" WindowState="Normal" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid Loaded="Grid_Loaded">
+            <Label Content="Calculate Compatibility" HorizontalAlignment="Left" Height="30" Margin="457,10,0,0" VerticalAlignment="Top" Width="196" FontFamily="Book Antiqua" FontSize="16"/>
+            <DatePicker x:Name="dpkBirthday" HorizontalAlignment="Left" Height="22" Margin="30,66,0,0" VerticalAlignment="Top" Width="255"/>
+            <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FFE20010" FontFamily="Bahnschrift SemiLight" RenderTransformOrigin="0.426,0.081" Margin="359,45,0,0"/>
+            <ComboBox x:Name="cboGender" HorizontalAlignment="Left" Height="22" Margin="359,66,0,0" VerticalAlignment="Top" Width="260"/>
+            <Label x:Name="lblBirthday" Content="Birthday" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FFE20010" FontFamily="Bahnschrift SemiLight" RenderTransformOrigin="0.426,0.081" Margin="30,45,0,0"/>
+            <Label x:Name="lblElement" Content="Calculate Your Element" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FFE20010" FontFamily="Bahnschrift SemiLight" RenderTransformOrigin="0.426,0.081" Margin="720,42,0,0"/>
+            <Button x:Name="btnCalculate" Content="Calculate" HorizontalAlignment="Left" Height="22" Margin="702,66,0,0" VerticalAlignment="Top" Width="321" Click="Button_Click"/>
+            <Label x:Name="lblResult"  HorizontalAlignment="Left" Height="32" Margin="702,88,0,0" VerticalAlignment="Top" Width="321" FontFamily="Archivo Narrow" FontWeight="Bold" FontSize="16"/>
+            <DataGrid x:Name="dgvKoiFish" HorizontalAlignment="Left" Height="355" Margin="30,164,0,0" VerticalAlignment="Top" Width="1033" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Image" Width="180">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Image}"
+                                    Height="200"
+                                    Width="200"
+                                    Stretch="Uniform"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Type" Width="200" Binding="{Binding KoiType}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Element" Width="200" Binding="{Binding Element}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}" IsReadOnly="True"/>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label x:Name="lblKoi" Content="Koi Fish" HorizontalAlignment="Left" Height="36" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FF5039A0" FontFamily="Heebo" RenderTransformOrigin="0.426,0.081" Margin="30,123,0,0" FontSize="22"/>
+            <ComboBox x:Name="cboElement" HorizontalAlignment="Left" Height="22" Margin="145,135,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="22" Margin="335,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"  />
+            <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="22" Margin="546,135,0,0" VerticalAlignment="Top" Width="130" Click="btnSearch_Click"/>
+            <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Height="22" Margin="702,135,0,0" VerticalAlignment="Top" Width="130" Click="btnReset_Click"/>
+
+
+        </Grid>
+    </ScrollViewer>
+</Window>
