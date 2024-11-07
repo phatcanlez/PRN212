@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FengShuiKoi"
         mc:Ignorable="d"
-        Title="CalculateWindow" Height="677" Width="1099" WindowState="Normal" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid Loaded="Grid_Loaded">
+        Title="CalculateWindow" Height="2000" Width="1099" WindowState="Maximized" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+        <Grid Loaded="Grid_Loaded" Height="2262" Width="1132">
             <Label Content="Calculate Compatibility" HorizontalAlignment="Left" Height="30" Margin="457,10,0,0" VerticalAlignment="Top" Width="196" FontFamily="Book Antiqua" FontSize="16"/>
             <DatePicker x:Name="dpkBirthday" HorizontalAlignment="Left" Height="22" Margin="30,66,0,0" VerticalAlignment="Top" Width="255"/>
             <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FFE20010" FontFamily="Bahnschrift SemiLight" RenderTransformOrigin="0.426,0.081" Margin="359,45,0,0"/>
@@ -16,7 +16,8 @@
             <Label x:Name="lblElement" Content="Calculate Your Element" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FFE20010" FontFamily="Bahnschrift SemiLight" RenderTransformOrigin="0.426,0.081" Margin="720,42,0,0"/>
             <Button x:Name="btnCalculate" Content="Calculate" HorizontalAlignment="Left" Height="22" Margin="702,66,0,0" VerticalAlignment="Top" Width="321" Click="Button_Click"/>
             <Label x:Name="lblResult"  HorizontalAlignment="Left" Height="32" Margin="702,88,0,0" VerticalAlignment="Top" Width="321" FontFamily="Archivo Narrow" FontWeight="Bold" FontSize="16"/>
-            <DataGrid x:Name="dgvKoiFish" HorizontalAlignment="Left" Height="355" Margin="30,164,0,0" VerticalAlignment="Top" Width="1033" AutoGenerateColumns="False">
+            <DataGrid x:Name="dgvKoiFish" HorizontalAlignment="Left" Height="514" Margin="31,164,0,0" VerticalAlignment="Top" Width="1033" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
+
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Image" Width="180">
                         <DataGridTemplateColumn.CellTemplate>
@@ -40,7 +41,80 @@
             <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="22" Margin="335,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"  />
             <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Height="22" Margin="546,135,0,0" VerticalAlignment="Top" Width="130" Click="btnSearch_Click"/>
             <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Height="22" Margin="702,135,0,0" VerticalAlignment="Top" Width="130" Click="btnReset_Click"/>
-
+            <Grid HorizontalAlignment="Left" Background="White" Height="432" Margin="31,756,0,0" VerticalAlignment="Top" Width="1033">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <GroupBox Header="Pond Shape" BorderBrush="#f0964b" BorderThickness="1" >
+                        <GroupBox.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Foreground="#f0964b" FontWeight="Bold"/>
+                            </DataTemplate>
+                        </GroupBox.HeaderTemplate>
+                        <ItemsControl x:Name="itcImage">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton GroupName="PondShapes"
+                             Margin="5" Checked="RadioButton_Checked"
+                             >
+                                        <Border BorderBrush="Gray"
+                            BorderThickness="1"
+                            Padding="50 10 50 10">
+                                            <StackPanel>
+                                                <Image Source="{Binding Image}"
+                                   Height="150"
+                                   Width="150"/>
+                                                <TextBlock Text="{Binding ShapeId}"
+                                       HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                        <RadioButton.Style>
+                                            <Style TargetType="RadioButton">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="RadioButton">
+                                                            <Border x:Name="border"
+                                                Background="Transparent"
+                                                BorderThickness="2"
+                                                BorderBrush="Transparent">
+                                                                <ContentPresenter/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver"
+                                                     Value="True">
+                                                                    <Setter TargetName="border"
+                                                        Property="BorderBrush"
+                                                        Value="#ADD8E6"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsChecked"
+                                                     Value="True">
+                                                                    <Setter TargetName="border"
+                                                        Property="BorderBrush"
+                                                        Value="#007ACC"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </RadioButton.Style>
+                                    </RadioButton>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </GroupBox>
+                </ScrollViewer>
+            </Grid>
+            <ComboBox x:Name="cboDirection" HorizontalAlignment="Left" Height="26" Margin="125,1231,0,0" VerticalAlignment="Top" Width="898"/>
+            <Label x:Name="lblDirection" Content="Direction" HorizontalAlignment="Left" Height="45" Margin="31,1231,0,0" VerticalAlignment="Top" Width="146" FontFamily="Arial" FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="btnCalculateCompatibility" Content="Calculate Compatibility" HorizontalAlignment="Left" Height="34" Margin="285,1307,0,0" VerticalAlignment="Top" Width="577" Background="#FFFFC7C7" Foreground="#FF1E4541" FontFamily="Bahnschrift SemiBold" Click="btnCalculateCompatibility_Click"/>
+            <Grid HorizontalAlignment="Left" Background="White" Height="318" Margin="38,1383,0,0" VerticalAlignment="Top" Width="1034">
+                <Label x:Name="lblKetqua" Content="Label" HorizontalAlignment="Left" Height="27" Margin="10,20,0,0" VerticalAlignment="Top" Width="138"/>
+            </Grid>
+            <Label x:Name="lblResultCompatibility" Content="Result" HorizontalAlignment="Left" Height="45" Margin="38,1351,0,0" VerticalAlignment="Top" Width="146" FontFamily="Cascadia Mono SemiBold" FontSize="14" Foreground="#FFE01C1C"/>
 
         </Grid>
     </ScrollViewer>

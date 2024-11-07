@@ -1,4 +1,5 @@
 ﻿using BLL.Services;
+using DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,13 @@ namespace FengShuiKoi
     /// </summary>
     public partial class CalCompatibilityWindow : Window
     {
+        private String _selectedShapeId;
+        private readonly StringBuilder fullComment = new StringBuilder();
         private ElementService elementService = new();
         private LifePalaceService lifePalaceService = new();
         private KoiVarietyService koiVarietyService = new();
+        private ShapeService shapeService  = new();
+        private DirectionService directionService = new();
         public CalCompatibilityWindow()
         {
             InitializeComponent();
@@ -37,6 +42,9 @@ namespace FengShuiKoi
             dgvKoiFish.ItemsSource = koiVarietyService.GetKoiVarieties();
             cboElement.ItemsSource = elementService.GetElements();
             cboElement.SelectedIndex = 0;
+            itcImage.ItemsSource = shapeService.GetShapes();
+            cboDirection.ItemsSource = directionService.GetDirections();
+            cboDirection.SelectedIndex = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -68,6 +76,44 @@ namespace FengShuiKoi
             dgvKoiFish.ItemsSource = koiVarietyService.GetKoiVarieties();
             cboElement.SelectedIndex = 0;
             txtName.Text = "";
+        }
+
+
+
+ 
+
+        private void btnCalculateCompatibility_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                fullComment.Clear();
+                var koi = dgvKoiFish.SelectedItem as KoiVariety;
+                var selectedShape = _selectedShapeId;
+                var direction = cboDirection.SelectedValue.ToString();
+                var dateOfBirth = dpkBirthday.SelectedDate.Value;
+                var gender = cboGender.SelectedValue.ToString();
+                double compatibility = await _compatibilityCalculator.CalculateCompatibility(
+                   selectedKoi,
+                   selectedShape,
+                   selectedDirection,
+                   dateOfBirth,
+                   gender
+               );
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton radioButton && radioButton.DataContext != null)
+            {
+                dynamic shape = radioButton.DataContext;
+                _selectedShapeId = shape.ShapeId;
+            }
         }
     }
 }

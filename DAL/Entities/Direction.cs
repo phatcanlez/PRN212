@@ -8,4 +8,9 @@ public partial class Direction
     public string DirectionId { get; set; } = null!;
 
     public virtual ICollection<LifePalaceDirection> LifePalaceDirections { get; set; } = new List<LifePalaceDirection>();
+
+    public override string ToString()
+    {
+        return DirectionId;
+    }
 }
