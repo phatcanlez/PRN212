@@ -10,10 +10,14 @@ namespace BLL.Util
 {
     public class CompabilityCal
     {
-        private readonly ElementService elementService;
-        private readonly ElementCalculator elementCalculator;
-        private readonly KoiPercentService koiPercentService;
-        public async Task<double> CalculateCompatibility(KoiVariety selectedKoi, string shapeId, string direction, DateTime dateOfBirth, string gender)
+        private readonly ElementService elementService = new();
+        private readonly ElementCalculator elementCalculator = new();
+        private readonly KoiPercentService koiPercentService = new();
+        private readonly PointElementService pointElementService = new();
+        private readonly PointShapeService pointOfShapeService = new();
+        private readonly LifePalaceService lifePalaceService = new();
+        private readonly LifePalaceDirectionService lifePlaceDirectionService = new();
+        public double CalculateCompatibility(KoiVariety selectedKoi, string shapeId, string direction, DateTime dateOfBirth, string gender)
         {
             string dob = dateOfBirth.ToString("yyyy-MM-dd");
             double s1 = 0, s2 = 0, s3 = 0;
@@ -21,7 +25,7 @@ namespace BLL.Util
 
             if (selectedKoi != null)
             {
-                var koiScore = await CalculateKoiScore(selectedKoi.KoiType, dob);
+                var koiScore = CalculateKoiScore(selectedKoi.KoiType, dob);
                 if (koiScore.HasValue)
                 {
                     s1 = koiScore.Value;
@@ -31,7 +35,7 @@ namespace BLL.Util
 
             if (!string.IsNullOrEmpty(shapeId))
             {
-                var shapeScore = await CalculateShapeScore(shapeId, dob);
+                var shapeScore = CalculateShapeScore(shapeId, dob);
                 if (shapeScore.HasValue)
                 {
                     s2 = shapeScore.Value;
@@ -41,7 +45,7 @@ namespace BLL.Util
 
             if (!string.IsNullOrEmpty(direction))
             {
-                var directionScore = await CalculateDirectionScore(direction, dob, gender);
+                var directionScore =  CalculateDirectionScore(direction, dob, gender);
                 if (directionScore.HasValue)
                 {
                     s3 = directionScore.Value;
@@ -70,19 +74,40 @@ namespace BLL.Util
             return Math.Round(compatibility, 2);
         }
 
-        public double CalculateKoiScore(string koiType, string dob)
+        public double? CalculateKoiScore(string koiType, string dob)
         {
             string element = elementService.GetElementByBirthYear(dob);
-            var koiColors = koiPercentService.getKoiPercent(koiType);
+            var koiColors =  koiPercentService.getKoiPercent(koiType);
             double totalScore = 0;
 
             foreach (var color in koiColors)
             {
-                var pointForColor = await _elementColorService.GetPointElementColor(element, color.ColorId);
+                var pointForColor = pointElementService.GetPointElementColor(element, color.ColorId);
                 totalScore += pointForColor * color.Percentage;
             }
             return totalScore * 100;
         }
 
+        public double? CalculateShapeScore(string shapeId, string dob)
+        {
+
+            string element = elementService.GetElementByBirthYear(dob);
+            var shape = pointOfShapeService.GetPointOfShape(element, shapeId);
+            return shape?.Point * 100;
+        }
+
+        public double? CalculateDirectionScore(string direction, string dob, string gender)
+        {
+            int[] lunarDate = LunarCalendarConverter.ConvertSolarToLunar(dob, 7);
+            if (lunarDate == null) return null;
+
+            int lunarYear = lunarDate[2];
+            string lifePlace = lifePalaceService.CalculateFate(lunarYear.ToString(), gender);
+            var point = lifePlaceDirectionService.GetLifePlaceDirectionById(lifePlace, direction);
+            return point.PointOfDirection * 100;
+        }
     }
+
+    
+
 }

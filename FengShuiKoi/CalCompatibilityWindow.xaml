@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FengShuiKoi"
         mc:Ignorable="d"
-        Title="CalculateWindow" Height="2000" Width="1099" WindowState="Maximized" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
+        Title="CalculateWindow" Height="1800" Width="1099" WindowState="Maximized" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
-        <Grid Loaded="Grid_Loaded" Height="2262" Width="1132">
+        <Grid Loaded="Grid_Loaded" Height="1800" Width="1099">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1994*"/>
+                <RowDefinition Height="25*"/>
+            </Grid.RowDefinitions>
             <Label Content="Calculate Compatibility" HorizontalAlignment="Left" Height="30" Margin="457,10,0,0" VerticalAlignment="Top" Width="196" FontFamily="Book Antiqua" FontSize="16"/>
             <DatePicker x:Name="dpkBirthday" HorizontalAlignment="Left" Height="22" Margin="30,66,0,0" VerticalAlignment="Top" Width="255"/>
             <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="142" Background="#00000000" Foreground="#FFE20010" FontFamily="Bahnschrift SemiLight" RenderTransformOrigin="0.426,0.081" Margin="359,45,0,0"/>
@@ -112,10 +116,16 @@
             <Label x:Name="lblDirection" Content="Direction" HorizontalAlignment="Left" Height="45" Margin="31,1231,0,0" VerticalAlignment="Top" Width="146" FontFamily="Arial" FontWeight="Bold" FontSize="14"/>
             <Button x:Name="btnCalculateCompatibility" Content="Calculate Compatibility" HorizontalAlignment="Left" Height="34" Margin="285,1307,0,0" VerticalAlignment="Top" Width="577" Background="#FFFFC7C7" Foreground="#FF1E4541" FontFamily="Bahnschrift SemiBold" Click="btnCalculateCompatibility_Click"/>
             <Grid HorizontalAlignment="Left" Background="White" Height="318" Margin="38,1383,0,0" VerticalAlignment="Top" Width="1034">
-                <Label x:Name="lblKetqua" Content="Label" HorizontalAlignment="Left" Height="27" Margin="10,20,0,0" VerticalAlignment="Top" Width="138"/>
+                <Label x:Name="lblCompatibilityScore" Visibility="Collapsed"  HorizontalAlignment="Center" Height="34" Margin="0,24,0,0" VerticalAlignment="Top" Width="998" Foreground="#FFF0350B" FontFamily="Arial" FontWeight="Bold"/>
             </Grid>
-            <Label x:Name="lblResultCompatibility" Content="Result" HorizontalAlignment="Left" Height="45" Margin="38,1351,0,0" VerticalAlignment="Top" Width="146" FontFamily="Cascadia Mono SemiBold" FontSize="14" Foreground="#FFE01C1C"/>
-
+            <TextBlock x:Name="txbResultContent" HorizontalAlignment="Left" Height="228" Visibility="Collapsed" Margin="56,1450,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="1008" FontWeight="Bold" FontFamily="Archivo Narrow Medium" FontSize="16">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF2A65C5" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
         </Grid>
     </ScrollViewer>
 </Window>
