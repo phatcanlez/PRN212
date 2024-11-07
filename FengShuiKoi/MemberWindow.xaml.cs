@@ -44,5 +44,13 @@ namespace FengShuiKoi
             
 
         }
+
+        private void btnKoiConsulting_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultingWindow consultingWindow = new ConsultingWindow();
+            this.Hide();
+            consultingWindow.ShowDialog();
+            this.Show();
+        }
     }
 }
