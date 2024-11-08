@@ -54,7 +54,7 @@ public partial class Swp391FengShuiKoiConsultingDbContext : DbContext
     public virtual DbSet<TypeColor> TypeColors { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=(local);Database=SWP391_FengShuiKoiConsulting_DB;UID=sa;PWD=12345;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer(GetConnectionString());
     private string? GetConnectionString()
     {
         IConfiguration configuration = new ConfigurationBuilder()

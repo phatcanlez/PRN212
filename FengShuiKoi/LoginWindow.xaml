@@ -5,14 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FengShuiKoi"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Background="#FFE3E3E3">
+        Title="LoginWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Background="#F5F5F5">
     <Grid>
-        <TextBox x:Name="txtUsername" TabIndex="1" HorizontalAlignment="Left" Height="25" Margin="231,161,0,10" TextWrapping="Wrap" Width="312" TextAlignment="Justify"  VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" />
-        <Button x:Name="btnLogin" Content="Login" TabIndex="3" HorizontalAlignment="Left" Height="45" Margin="291,294,0,0" VerticalAlignment="Top" Width="202" Click="Button_Click"/>
-        <Label Content="Username" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="180,135,0,0" VerticalAlignment="Top" Width="156"/>
-        <Label Content="Password" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="219,202,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="Feng Shui Koi System" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" FontSize="22" Width="268"/>
-        <PasswordBox x:Name="txtPassword" TabIndex="2" HorizontalAlignment="Left" Height="26" Margin="231,233,0,0" VerticalAlignment="Top" Width="312" VerticalContentAlignment="Center" FontSize="9"/>
+        <!-- Username Label -->
+        <Label Content="Username" HorizontalContentAlignment="Center" HorizontalAlignment="Left" 
+               Margin="180,135,0,0" VerticalAlignment="Top" Width="156" FontSize="14" Foreground="#2C2C2C"/>
 
+        <!-- Username TextBox -->
+        <TextBox x:Name="txtUsername" TabIndex="1" HorizontalAlignment="Left" Height="25" 
+                 Margin="231,161,0,10" TextWrapping="Wrap" Width="312" TextAlignment="Justify" 
+                 VerticalAlignment="Top" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" 
+                 GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" 
+                 Background="#D9D9D9" BorderBrush="#2C2C2C" BorderThickness="1" FontSize="12"/>
+
+        <!-- Password Label -->
+        <Label Content="Password" HorizontalContentAlignment="Center" HorizontalAlignment="Left" 
+               Margin="219,202,0,0" VerticalAlignment="Top" Width="78" FontSize="14" Foreground="#2C2C2C"/>
+
+        <!-- Password TextBox -->
+        <PasswordBox x:Name="txtPassword" TabIndex="2" HorizontalAlignment="Left" Height="26" 
+                     Margin="231,233,0,0" VerticalAlignment="Top" Width="312" VerticalContentAlignment="Center" 
+                     FontSize="12" Background="#D9D9D9" BorderBrush="#2C2C2C" BorderThickness="1"/>
+
+        <!-- Login Button -->
+        <Button x:Name="btnLogin" Content="Login" TabIndex="3" HorizontalAlignment="Left" Height="45" 
+                Margin="291,294,0,0" VerticalAlignment="Top" Width="202" Click="Button_Click" 
+                Background="#E25822" Foreground="White" FontSize="14" FontWeight="Bold" BorderBrush="#2C2C2C"/>
+
+        <!-- Title Label -->
+        <Label Content="Feng Shui Koi System" HorizontalAlignment="Center" Margin="0,74,0,0" 
+               VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" FontSize="22" Width="268" 
+               Foreground="#2C2C2C"/>
     </Grid>
 </Window>

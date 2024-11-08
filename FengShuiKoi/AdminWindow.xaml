@@ -6,17 +6,22 @@
         xmlns:local="clr-namespace:FengShuiKoi"
         mc:Ignorable="d"
         Title="AdminWindow" Height="470" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFCBCACA" Loaded="Grid_Loaded">
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="294,382,0,0" VerticalAlignment="Top" Width="462"/>
-        <GroupBox x:Name="grbDetail" HorizontalAlignment="Center" Height="122" Header=" Detail " VerticalAlignment="Top" Width="724" FontStyle="Italic" FontFamily="Bahnschrift" Margin="0,235,0,0">
+    <Grid Background="#F5F5F5" Loaded="Grid_Loaded">
+        <!-- Border for general layout -->
+        <Border BorderBrush="#2C2C2C" BorderThickness="1" HorizontalAlignment="Left" Height="41" Margin="294,382,0,0" VerticalAlignment="Top" Width="462"/>
+
+        <!-- GroupBox for Detail section -->
+        <GroupBox x:Name="grbDetail" HorizontalAlignment="Center" Height="122" Header=" Detail " VerticalAlignment="Top" Width="724" FontStyle="Italic" FontFamily="Bahnschrift" Margin="0,235,0,0" Background="#D9D9D9">
             <GroupBox.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFCE4DBD" Offset="1"/>
+                    <GradientStop Color="#2C2C2C"/>
+                    <GradientStop Color="#E25822" Offset="1"/>
                 </LinearGradientBrush>
             </GroupBox.Foreground>
         </GroupBox>
-        <DataGrid x:Name="dgv" HorizontalAlignment="Center" Height="181" Margin="0,36,0,0" VerticalAlignment="Top" Width="712" AutoGenerateColumns="False" CanUserAddRows="False"  >
+
+        <!-- DataGrid for displaying information -->
+        <DataGrid x:Name="dgv" HorizontalAlignment="Center" Height="181" Margin="0,36,0,0" VerticalAlignment="Top" Width="712" AutoGenerateColumns="False" CanUserAddRows="False" Background="#FFFFFF" BorderBrush="#2C2C2C">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#No" Binding="{Binding number}" Width="50"/>
                 <DataGridTextColumn Header="ID" Binding="{Binding UserId}" Width="100"/>
@@ -24,31 +29,41 @@
                 <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="130"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="200"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="130"/>
-
             </DataGrid.Columns>
         </DataGrid>
 
-        <Label x:Name="lblFootballPLayer" Content="FengShuKoi" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="31" Width="155" FontFamily="Arial Black" HorizontalContentAlignment="Center" FontSize="16" Foreground="Black" Background="#00000000" FontWeight="Bold"/>
+        <!-- Header label -->
+        <Label x:Name="lblFootballPLayer" Content="FengShuKoi" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="31" Width="155" FontFamily="Arial Black" HorizontalContentAlignment="Center" FontSize="16" Foreground="#E25822" Background="Transparent" FontWeight="Bold"/>
 
-        <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="54,251,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="138,254,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="51,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
-        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="138,285,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="51,312,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="137,316,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="263" RenderTransformOrigin="0.525,1.35"/>
+        <!-- Labels and TextBoxes for form inputs -->
+        <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="54,251,0,0" VerticalAlignment="Top" Foreground="#2C2C2C"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="138,254,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="114" Background="#F5F5F5" BorderBrush="#2C2C2C"/>
 
-        <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="461,288,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
-        <ComboBox x:Name="cboStatus" HorizontalAlignment="Left" Margin="511,288,0,0" VerticalAlignment="Top" Width="234"/>
-        <Label x:Name="lblClubName" Content="Role" HorizontalAlignment="Left" Margin="269,264,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
-        <ComboBox x:Name="cboRole" HorizontalAlignment="Left" Height="19" Margin="268,286,0,0" VerticalAlignment="Top" Width="132"/>
-        <Button x:Name="btnInsert" TabIndex="3" Content="Insert" HorizontalAlignment="Left" Margin="302,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Click="btnInsert_Click" />
-        <Button x:Name="btnUpdate" TabIndex="3" Content="Update" HorizontalAlignment="Left" Margin="417,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnUpdate_Click"/>
-       <Button x:Name="btnDelete" TabIndex="3" Content="Ban" HorizontalAlignment="Left" Margin="539,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnDelete_Click"/>
+        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="51,281,0,0" VerticalAlignment="Top" Foreground="#2C2C2C"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="138,285,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="114" Background="#F5F5F5" BorderBrush="#2C2C2C"/>
 
-        <Button x:Name="btnClear" TabIndex="3" Content="Reset" HorizontalAlignment="Left" Margin="658,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnClear_Click"/>
-        <Label x:Name="lblOption" Content="Option:" HorizontalAlignment="Left" Margin="321,363,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.898,1.219" FontWeight="Bold" FontFamily="Bahnschrift"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="56,423,0,0" VerticalAlignment="Top" Width="168"/>
-        <TextBox x:Name="TextBoxSearch" HorizontalAlignment="Left" Height="38" Margin="38,387,0,0" TextWrapping="Wrap" Text="Search " VerticalAlignment="Top" Width="230" TextChanged="TextBox_TextChanged"/>
+        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="51,312,0,0" VerticalAlignment="Top" Foreground="#2C2C2C"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="137,316,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="263" Background="#F5F5F5" BorderBrush="#2C2C2C"/>
 
+        <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="461,288,0,0" VerticalAlignment="Top" Foreground="#2C2C2C"/>
+        <ComboBox x:Name="cboStatus" HorizontalAlignment="Left" Margin="511,288,0,0" VerticalAlignment="Top" Width="234" Background="#F5F5F5" BorderBrush="#2C2C2C"/>
+
+        <Label x:Name="lblClubName" Content="Role" HorizontalAlignment="Left" Margin="269,264,0,0" VerticalAlignment="Top" Foreground="#2C2C2C"/>
+        <ComboBox x:Name="cboRole" HorizontalAlignment="Left" Height="19" Margin="268,286,0,0" VerticalAlignment="Top" Width="132" Background="#F5F5F5" BorderBrush="#2C2C2C"/>
+
+        <!-- Buttons -->
+        <Button x:Name="btnInsert" TabIndex="3" Content="Insert" HorizontalAlignment="Left" Margin="302,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="#E25822" Foreground="White" BorderBrush="#2C2C2C" Click="btnInsert_Click"/>
+        <Button x:Name="btnUpdate" TabIndex="3" Content="Update" HorizontalAlignment="Left" Margin="417,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="#E25822" Foreground="White" BorderBrush="#2C2C2C" Cursor="Hand" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" TabIndex="3" Content="Ban" HorizontalAlignment="Left" Margin="539,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="#E25822" Foreground="White" BorderBrush="#2C2C2C" Cursor="Hand" Click="btnDelete_Click"/>
+        <Button x:Name="btnClear" TabIndex="3" Content="Reset" HorizontalAlignment="Left" Margin="658,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="#E25822" Foreground="White" BorderBrush="#2C2C2C" Cursor="Hand" Click="btnClear_Click"/>
+
+        <!-- Option Label -->
+        <Label x:Name="lblOption" Content="Option:" HorizontalAlignment="Left" Margin="321,363,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Bahnschrift" Foreground="#2C2C2C"/>
+
+        <!-- Search TextBox -->
+        <TextBox x:Name="TextBoxSearch" HorizontalAlignment="Left" Height="38" Margin="38,387,0,0" TextWrapping="Wrap" Text="Search " VerticalAlignment="Top" Width="230" Background="#F5F5F5" BorderBrush="#2C2C2C" TextChanged="TextBox_TextChanged"/>
+
+        <!-- Border for visual separation -->
+        <Border BorderBrush="#2C2C2C" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="56,423,0,0" VerticalAlignment="Top" Width="168"/>
     </Grid>
 </Window>

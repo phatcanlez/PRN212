@@ -5,17 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FengShuiKoi"
         mc:Ignorable="d"
-        Title="MemberWindow" Height="677" Width="1099" WindowState="Normal" ResizeMode="NoResize" Background="#FFE3E3E3" WindowStartupLocation="CenterScreen">
+        Title="MemberWindow" Height="677" Width="1099" WindowState="Normal" ResizeMode="NoResize" Background="#F5F5F5" WindowStartupLocation="CenterScreen">
     <Grid Loaded="Grid_Loaded" Margin="0,0,10,-6">
-        <StackPanel  Margin="274,151,273,254">
+        <!-- Background image with overlay to soften it -->
+        <StackPanel Margin="274,151,273,254">
             <StackPanel.Background>
-                <ImageBrush ImageSource="/ca-koi-4-3982.png" Opacity="1"/>
+                <ImageBrush ImageSource="/ca-koi-4-3982.png" Opacity="0.3"/>
             </StackPanel.Background>
-
         </StackPanel>
-        <Label x:Name="lblWelcome" Content="Welcome Member" HorizontalAlignment="Left" Height="84" Margin="449,109,0,0" VerticalAlignment="Top" Width="310" FontFamily="Bradley Hand ITC" FontSize="22" FontWeight="Bold" Foreground="#FF6A2427"/>
-        <Button x:Name="btnKoiConsulting" Content="Koi Consulting" BorderThickness="0.5" HorizontalAlignment="Left" Height="55" Margin="316,439,0,0" VerticalAlignment="Top" Width="188" RenderTransformOrigin="0.526,1.846" Background="#FFDCCACA" Click="btnKoiConsulting_Click"/>
-        <Button x:Name="btnCalculate" BorderThickness="0.5"  Content="Calculate koi and pond compatibility" HorizontalAlignment="Left" Height="55" Margin="546,439,0,0" VerticalAlignment="Top" Width="213" Background="#FFDCCACA" Click="btnCalculate_Click"/>
 
+        <!-- Welcome Label -->
+        <Label x:Name="lblWelcome" Content="Welcome Member" HorizontalAlignment="Left" Height="84" 
+               Margin="449,109,0,0" VerticalAlignment="Top" Width="310" FontFamily="Bradley Hand ITC" 
+               FontSize="22" FontWeight="Bold" Foreground="#2C2C2C"/>
+
+        <!-- Koi Consulting Button -->
+        <Button x:Name="btnKoiConsulting" Content="Koi Consulting" BorderThickness="0.5" HorizontalAlignment="Left" 
+                Height="55" Margin="316,439,0,0" VerticalAlignment="Top" Width="188" 
+                Background="#E25822" Foreground="White" FontSize="14" FontWeight="Bold" 
+                BorderBrush="#2C2C2C" Click="btnKoiConsulting_Click"/>
+
+        <!-- Calculate Button -->
+        <Button x:Name="btnCalculate" BorderThickness="0.5" Content="Calculate koi and pond compatibility" 
+                HorizontalAlignment="Left" Height="55" Margin="546,439,0,0" VerticalAlignment="Top" 
+                Width="213" Background="#E25822" Foreground="White" FontSize="14" FontWeight="Bold" 
+                BorderBrush="#2C2C2C" Click="btnCalculate_Click"/>
     </Grid>
 </Window>
