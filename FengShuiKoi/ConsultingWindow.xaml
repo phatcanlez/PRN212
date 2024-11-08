@@ -28,7 +28,9 @@
                     </Expander>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
         </ListView>
+        <Button Content="Close" HorizontalAlignment="Left" Height="24" Margin="1354,0,0,0" VerticalAlignment="Top" Width="85" Background="#FFFFDECE" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -71,6 +71,21 @@ namespace FengShuiKoi
                     Question = "Nên nuôi cá Koi bao nhiêu con để đạt hiệu quả phong thủy cao nhất?",
                     Answer = "Số lượng cá Koi lý tưởng là 9 con, vì con số này mang lại sự hoàn hảo, tượng trưng cho sự trường thọ và may mắn. Tuy nhiên, số lượng cá cũng có thể thay đổi tùy thuộc vào không gian và sở thích của gia chủ."
                 },
+                   new FaqItem
+                {
+                    Question = "Có cần lựa chọn giống cá Koi theo phong thủy không?",
+                    Answer = "Theo phong thủy, lựa chọn giống cá Koi có thể mang đến sự cân bằng trong năng lượng và thu hút tài lộc. Chẳng hạn, giống Koi Kohaku với màu đỏ và trắng được coi là mang lại sự hài hòa và may mắn."
+                },
+                   new FaqItem
+                {
+                    Question = "Có nên nuôi cá Koi với kích thước khác nhau trong cùng một hồ không?",
+                    Answer = "Nên lựa chọn cá Koi có kích thước tương đồng để tránh xung đột và tạo sự hài hòa trong bể, giúp duy trì sự cân bằng phong thủy."
+                },
+                    new FaqItem
+                {
+                    Question = "Thời gian cho cá Koi ăn có ảnh hưởng đến phong thủy không?",
+                    Answer = "Thời gian cho cá ăn nên ổn định, thường là vào sáng sớm hoặc chiều muộn. Việc duy trì thói quen này giúp cá phát triển khỏe mạnh và duy trì năng lượng phong thủy ổn định."
+                },
             };
 
             // Gán danh sách FAQ cho ListView
@@ -82,7 +97,11 @@ namespace FengShuiKoi
             public string Question { get; set; }
             public string Answer { get; set; }
         }
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
