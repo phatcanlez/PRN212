@@ -33,6 +33,25 @@ namespace FengShuiKoi
         {
             refreshData();
         }
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Account acc = dgv.SelectedItem as Account;
+            if (acc == null)
+            {
+                MessageBox.Show("Please select a row", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                MessageBoxResult ans = MessageBox.Show("Do you want to ban account " + acc.UserId, "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (ans == MessageBoxResult.No)
+                    return;
+                accountService.Delete(acc);
+                MessageBox.Show("Banned Successful", "Done", MessageBoxButton.OK, MessageBoxImage.Information);
+              
+            }
+            refreshData();
+        }
 
         private void refreshData()
         {
@@ -46,7 +65,7 @@ namespace FengShuiKoi
             statusList.Add("Active");
             statusList.Add("Banned");
 
-            cboClubName.ItemsSource = roleList;
+            cboRole.ItemsSource = roleList;
 
             cboStatus.ItemsSource = statusList;
 
@@ -56,7 +75,7 @@ namespace FengShuiKoi
         {
             string userId = txtId.Text;
             string password = txtPassword.Text;
-            string role = cboClubName.Text;
+            string role = cboRole.Text;
             string email = txtEmail.Text;
             string status = cboStatus.Text;
             Account account = new Account()
@@ -75,17 +94,13 @@ namespace FengShuiKoi
             Account account = dgv.SelectedItem as Account;
             if (account != null)
             {
-                account.Role = cboClubName.Text;
+                account.Role = cboRole.Text;
                 account.Status = cboStatus.Text;
                 accountService.Update(account);
                 refreshData();
             }
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -98,7 +113,5 @@ namespace FengShuiKoi
             dgv.ItemsSource = null;
             dgv.ItemsSource = accountService.GetAll().Where(account => account.UserId.Contains(TextBoxSearch.Text) || account.Email.Contains(TextBoxSearch.Text)).ToList();
         }
-
-        
     }
 }
