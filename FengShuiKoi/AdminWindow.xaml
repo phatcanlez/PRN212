@@ -16,7 +16,7 @@
                 </LinearGradientBrush>
             </GroupBox.Foreground>
         </GroupBox>
-        <DataGrid x:Name="dgv" HorizontalAlignment="Center" Height="181" Margin="0,36,0,0" VerticalAlignment="Top" Width="712" AutoGenerateColumns="False" CanUserAddRows="False" >
+        <DataGrid x:Name="dgv" HorizontalAlignment="Center" Height="181" Margin="0,36,0,0" VerticalAlignment="Top" Width="712" AutoGenerateColumns="False" CanUserAddRows="False"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#No" Binding="{Binding number}" Width="50"/>
                 <DataGridTextColumn Header="ID" Binding="{Binding UserId}" Width="100"/>
@@ -27,7 +27,9 @@
 
             </DataGrid.Columns>
         </DataGrid>
+
         <Label x:Name="lblFootballPLayer" Content="FengShuKoi" HorizontalAlignment="Left" Margin="44,10,0,0" VerticalAlignment="Top" Height="31" Width="155" FontFamily="Arial Black" HorizontalContentAlignment="Center" FontSize="16" Foreground="Black" Background="#00000000" FontWeight="Bold"/>
+
         <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="54,251,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
         <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="138,254,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="114"/>
         <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="51,281,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
@@ -37,12 +39,12 @@
 
         <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="461,288,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
         <ComboBox x:Name="cboStatus" HorizontalAlignment="Left" Margin="511,288,0,0" VerticalAlignment="Top" Width="234"/>
-
         <Label x:Name="lblClubName" Content="Role" HorizontalAlignment="Left" Margin="269,264,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.87,0.549"/>
-        <ComboBox x:Name="cboClubName" HorizontalAlignment="Left" Height="19" Margin="268,286,0,0" VerticalAlignment="Top" Width="132"/>
+        <ComboBox x:Name="cboRole" HorizontalAlignment="Left" Height="19" Margin="268,286,0,0" VerticalAlignment="Top" Width="132"/>
         <Button x:Name="btnInsert" TabIndex="3" Content="Insert" HorizontalAlignment="Left" Margin="302,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Click="btnInsert_Click" />
         <Button x:Name="btnUpdate" TabIndex="3" Content="Update" HorizontalAlignment="Left" Margin="417,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnUpdate_Click"/>
-        <Button x:Name="btnDelete" TabIndex="3" Content="Ban" HorizontalAlignment="Left" Margin="539,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnDelete_Click"/>
+       <Button x:Name="btnDelete" TabIndex="3" Content="Ban" HorizontalAlignment="Left" Margin="539,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnDelete_Click"/>
+
         <Button x:Name="btnClear" TabIndex="3" Content="Reset" HorizontalAlignment="Left" Margin="658,392,0,0" VerticalAlignment="Top" Width="88" Height="21" Background="Gainsboro" BorderThickness="0.4" Foreground="Black" RenderTransformOrigin="0.517,0.088" Cursor="Hand" Click="btnClear_Click"/>
         <Label x:Name="lblOption" Content="Option:" HorizontalAlignment="Left" Margin="321,363,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.898,1.219" FontWeight="Bold" FontFamily="Bahnschrift"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="56,423,0,0" VerticalAlignment="Top" Width="168"/>

@@ -31,19 +31,8 @@ namespace FengShuiKoi
 
         public void Grid_Loaded(object sender, RoutedEventArgs routedEventArgs)
         {
-            dgv.ItemsSource = accountService.GetAll();
+            refreshData();
         }
-
-        private void btnInsert_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             Account acc = dgv.SelectedItem as Account;
@@ -63,6 +52,7 @@ namespace FengShuiKoi
             }
             refreshData();
         }
+
         private void refreshData()
         {
             dgv.ItemsSource = null;
@@ -75,11 +65,42 @@ namespace FengShuiKoi
             statusList.Add("Active");
             statusList.Add("Banned");
 
-            cboClubName.ItemsSource = roleList;
+            cboRole.ItemsSource = roleList;
 
             cboStatus.ItemsSource = statusList;
 
         }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+            string userId = txtId.Text;
+            string password = txtPassword.Text;
+            string role = cboRole.Text;
+            string email = txtEmail.Text;
+            string status = cboStatus.Text;
+            Account account = new Account()
+            {
+                UserId = userId,
+                Password = password,
+                Role = role,
+                Email = email,
+                Status = status
+            };
+            accountService.Add(account);
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            Account account = dgv.SelectedItem as Account;
+            if (account != null)
+            {
+                account.Role = cboRole.Text;
+                account.Status = cboStatus.Text;
+                accountService.Update(account);
+                refreshData();
+            }
+        }
+
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +110,8 @@ namespace FengShuiKoi
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            dgv.ItemsSource = null;
+            dgv.ItemsSource = accountService.GetAll().Where(account => account.UserId.Contains(TextBoxSearch.Text) || account.Email.Contains(TextBoxSearch.Text)).ToList();
         }
     }
 }
