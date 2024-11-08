@@ -10,5 +10,15 @@ namespace BLL.Services
         {
             return accountRepository.GetAll().Find(account => account.UserId == userId && account.Password == password);
         }
+
+        public List<Account> GetAll()
+        {
+            return accountRepository.GetAll();
+        }
+        public void Delete(Account acc)
+        {
+            acc.Status = "Banned";
+            accountRepository.Update(acc);
+        }
     }
 }
